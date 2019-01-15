@@ -39,6 +39,21 @@ namespace _37_EightQueensProblem.Properties
                 }
                 attackingQueenCounter = 0;
             }
+
+            attackingQueenCounter = 0;
+            for (var r = 0; r < 7; r++)
+            {
+                for (var c = 7; CountQueens >= r; c--)
+                {
+                    if (_board.board[7 - c + r, c] != Board.BoardChar)
+                    {
+                        attackingQueenCounter++;
+                        if (!CountQueens(attackingQueenCounter))
+                            return false;
+                    }
+                }
+                attackingQueenCounter = 0;
+            }
         }
 
 
