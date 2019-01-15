@@ -70,6 +70,22 @@ namespace _37_EightQueensProblem.Properties
                 attackingQueenCounter = 0;
             }
 
+            attackingQueenCounter = 0;
+            for (var r = 7; r > 0; r--)
+            {
+                for (var c = 0; c <= r; c++)
+                {
+                    if (_board.board[r - c, c] != Board.BoardChar)
+                    {
+                        attackingQueenCounter++;
+                        if (!CountQueens(attackingQueenCounter))
+                            return false;
+                    }
+                }
+                attackingQueenCounter = 0;
+            }
+
+            return true;
 
         }
 
