@@ -19,6 +19,18 @@ namespace _37_EightQueensProblem.Properties
             _queensCounter = 0;
         }
 
+        public void PlaceQueen()
+        {
+            _board.Init();
+            do
+            {
+                SetPositions();
+                Console.WriteLine(_runCounter);
+            } while (!IsWinner());
+
+            Console.WriteLine($"It took {_runCounter} attempts to make the queens set up correctly");
+        }
+
         public bool IsWinner()
         {
             _board.DisplayBoard();
@@ -43,7 +55,7 @@ namespace _37_EightQueensProblem.Properties
             attackingQueenCounter = 0;
             for (var r = 0; r < 7; r++)
             {
-                for (var c = 7; CountQueens >= r; c--)
+                for (var c = 7; c >= r; c--)
                 {
                     if (_board.board[7 - c + r, c] != Board.BoardChar)
                     {
