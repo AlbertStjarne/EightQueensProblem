@@ -19,6 +19,42 @@ namespace _37_EightQueensProblem.Properties
             _queensCounter = 0;
         }
 
+        public bool IsWinner()
+        {
+            _board.DisplayBoard();
+            Console.WriteLine();
+
+
+            var attackingQueenCounter = 0;
+            for (var c = 0; c < 7; c++)
+            {
+                for (var r = 0; r <= 7 - c; r++)
+                {
+                    if (_board.board[r, c + r] != Board.BoardChar)
+                    {
+                        attackingQueenCounter++;
+                        if (!CountQueens(attackingQueenCounter))
+                            return false;
+                    }
+                }
+                attackingQueenCounter = 0;
+            }
+        }
+
+
+        private bool CountQueens(int attackingQueenCounter)
+        {
+            if (attackingQueenCounter > 1)
+            {
+                _queensCounter = 0;
+                Array.Clear(_usedRows, 0, 8);
+                _board.Init();
+                return false;
+            }
+
+            return true;
+        }
+
         public void SetPositions()
         {
             var col = 0;
